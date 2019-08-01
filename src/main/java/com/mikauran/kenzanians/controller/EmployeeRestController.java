@@ -23,7 +23,7 @@ import com.mikauran.kenzanians.service.EmployeeService;
 
 @SuppressWarnings("unused")
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = { "http://localhost:3000", "http://localhost:8080"})
 public class EmployeeRestController {
 
 	@Autowired
@@ -47,6 +47,23 @@ public class EmployeeRestController {
 		return new ResponseEntity<List<Employee>>(employees, HttpStatus.OK );
 	}
 	
+	
+	/**
+	 * Retrieve All Employees
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/employee_active/", method= RequestMethod.GET)
+	public ResponseEntity<List<Employee>> listAllEmployeesActive(){
+		
+		List<Employee> employees = employeeService.findAllEmployeesActive();
+		
+		if(employees.isEmpty()){
+			return new ResponseEntity<List<Employee>>(HttpStatus.NO_CONTENT);
+		}
+		
+		return new ResponseEntity<List<Employee>>(employees, HttpStatus.OK );
+	}
 	
 	/**
 	 * Retrieve an Employee by Id

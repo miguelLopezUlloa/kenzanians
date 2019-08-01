@@ -21,6 +21,8 @@ public interface EmployeeService {
 	
 	List<Employee> findAllEmployees();
 	
+	public List<Employee> findAllEmployeesActive();
+	
 	void deleteAllEmployees();
 	
 	public boolean isEmployeeExist(Employee Employee);

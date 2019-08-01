@@ -23,6 +23,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public List<Employee> findAllEmployees() {
 		return (List<Employee>) employeeRepository.findAll();
 	}
+	
+	public List<Employee> findAllEmployeesActive(){
+		return (List<Employee>) employeeRepository.findAllEmployeesActive();
+	}
 
 	public Optional<Employee> findById(Long id) {
 		return employeeRepository.findById(id);
